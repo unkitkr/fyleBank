@@ -8,7 +8,7 @@ import time
 
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://postgres:SudoAdmin123@localhost/bank"
+app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://ulxolruwgfgeqi6pb3gs:yP4cMGwr48Oz5ZhHOwrL@bjlpphmszlkzgjtygczr-postgresql.services.clever-cloud.com:5432/bjlpphmszlkzgjtygczr"
 app.config['SECRET_KEY'] = '0817PDNTSPA'
 
 # cors = CORS(app, resources={r"/api/branches": {"origins": "http://localhost:3000"}})
@@ -25,6 +25,7 @@ def homepage():
     }), 200
 
 @app.route('/api/branches/autocomplete', methods=['GET'])
+@cross_origin(origin='*',headers=['Content- Type','Authorization'])
 def autocomplete():
     query_prams = request.args
     if query_prams:
@@ -50,7 +51,7 @@ def autocomplete():
 
 
 @app.route('/api/branches', methods=['GET'])
-@cross_origin(origin='localhost',headers=['Content- Type','Authorization'])
+@cross_origin(origin='*',headers=['Content- Type','Authorization'])
 def possible_matches():
     query_prams = request.args
     if query_prams:
@@ -101,6 +102,9 @@ def possible_matches():
         "error": "No query parameters found"
     }), 200
 
+'''
+ETL done, Route not required
+
 @app.route('/etl', methods=['GET'])
 def etl():
     with open("indian_banks/bank_branches.csv", 'r', encoding="utf-8") as csvfile:
@@ -118,8 +122,8 @@ def etl():
         "success": "Done"
     })
 
-
+'''
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
 
