@@ -104,7 +104,7 @@ def possible_matches():
 @app.route('/etl', methods=['GET'])
 def etl():
     with open("indian_banks/bank_branches.csv", 'r', encoding="utf-8") as csvfile:
-        csv_database = create_engine('postgresql://postgres:SudoAdmin123@localhost/bank')
+        csv_database = create_engine('postgresql://ulxolruwgfgeqi6pb3gs:yP4cMGwr48Oz5ZhHOwrL@bjlpphmszlkzgjtygczr-postgresql.services.clever-cloud.com:5432/bjlpphmszlkzgjtygczr')
         metadata = MetaData(csv_database)
         for frame in pd.read_csv(csvfile, chunksize= 1000, iterator=True):
             print(frame)
@@ -123,19 +123,3 @@ def etl():
 if __name__ == "__main__":
     app.run(debug=True)
 
-            # d = {column: query_param for column in columns}
-            # time1 = time.time()
-            # raw = Branch.query.filter(db.or_(Branch.district.ilike(query_param),Branch.state.ilike(query_param),Branch.city.ilike(query_param),
-            #     Branch.ifsc.ilike(query_param),Branch.address.ilike(query_param),Branch.branch.ilike(query_param))).all()
-            # print(raw)
-            # time2 = time.time()
-            # time3 = time.time()
-            # deletion = [set(x) for x in raw if len(x) != 0]
-            # deletion =  deletion[0].intersection(*deletion)
-            # raw = [j for i in raw for j in i]
-            # raw = set(raw)
-            # raw = raw - deletion
-            # time4 = time.time()
-            # print(time2-time1)
-            # print(time4-time3)
-            # print(raw)
