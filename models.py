@@ -1,7 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.dialects.postgresql import UUID
-from flask_login import  UserMixin
-import uuid
 import datetime
 
 db = SQLAlchemy()
