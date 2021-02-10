@@ -57,10 +57,10 @@ function Searchbar(props) {
     allData.branch && allData.branch.toLowerCase().indexOf(searchQuery.toLowerCase()) > -1 ||
     allData.ifsc && allData.ifsc.toLowerCase().indexOf(searchQuery.toLowerCase()) > -1 ||
     allData.address && allData.address.toLowerCase().indexOf(searchQuery.toLowerCase()) > -1 ||
-    allData.city && allData.city.toLowerCase().indexOf(searchQuery.toLowerCase()) > -1  ) ||
+    allData.city && allData.city.toLowerCase().indexOf(searchQuery.toLowerCase()) > -1  ||
     allData.district && allData.district.toLowerCase().indexOf(searchQuery.toLowerCase()) > -1 ||
     allData.state && allData.state.toLowerCase().indexOf(searchQuery.toLowerCase()) > -1
-  }
+    )}
   
   const  fetcher = async () => await fetch(`https://fylebanking.herokuapp.com/api/branches?q=${cityName}&limit=${limitValue}&offset=${offsetValue}`).then(res => res.json())
   const { data, error } = useSWR(`http://127.0.0.1:5000/api/branches?q=${cityName}&limit=${limitValue}&offset=${offsetValue}`, fetcher, { refreshInterval: 0 })
